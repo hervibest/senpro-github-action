@@ -47,7 +47,6 @@ jobs:
               mkdir -p `/senpro/463601/modul02;
               cd ~/senpro/463601/modul02;
               git clone https://github.com/hervibest/senpro-github-action.git;
-              cd -/senpro/463601/modul02/senpro-github-action;
               echo "Install Package dan Build Project";
               npm install;
               npm run build;
@@ -55,7 +54,7 @@ jobs:
             }||
             {
               echo "Repository sudah ada. Building...";
-              cd -/senpro/463601/modul02/senpro-github-action;s
+              cd -/senpro/463601/modul02/senpro-github-action;
               git restore .;
               git pull origin main;
               echo "Install Package dan Buid Project";
