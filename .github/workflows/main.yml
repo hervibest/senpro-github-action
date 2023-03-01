@@ -35,13 +35,13 @@ jobs:
         with:
           host: ${{secrets.HOST}}
           username: ${{secrets.USERNMAE}}
-          password: ${{secrets.Password}}
+          password: ${{secrets.PASSWORD}}
           port: ${{secrets.PORT}}
           script: |
             eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/senpro-ssh-27
             echo "Cek folder project";
-            [ ! -d "/home/hervibest/senpro/463601/modul02/senpro-github-action/"] &&
+            [ ! -d "/home/seniorproject-rabu/senpro/463601/modul02/senpro-github-action"] &&
             {
               echo "Repository belum di-clone. Cloning...";
               mkdir -p `/senpro/463601/modul02;
