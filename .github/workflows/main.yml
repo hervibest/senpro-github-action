@@ -38,27 +38,27 @@ deploy:
         password: ${{secrets.Password}}
         port: ${{secrets.PORT}}
         script: |
-        eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDsSgB/CxZESGjfDoFt9KUcaN5tWUL7RMZe5Ub77g2pF seniorproject-rabu@seniorproject-rabu
-        echo "Cek folder project";
-        [ ! -d "/home/hervibest/senpro/463601/modul01/senpro-github-action/"] &&
-        {
-          echo "Repository belum di-clone. Cloning...";
-          mkdir -p `/senpro/463601/modul01;
-          cd ~/senpro/463601/modul01;
-          git clone git@github.com:aldoarya/senpro-github-action.git;
-          cd -/senpro/463601/modul01/senpro-github-action;
-          echo "Install Package dan Build Project";
-          npm install;
-          npm run build;
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDsSgB/CxZESGjfDoFt9KUcaN5tWUL7RMZe5Ub77g2pF seniorproject-rabu@seniorproject-rabu
+          echo "Cek folder project";
+          [ ! -d "/home/hervibest/senpro/463601/modul01/senpro-github-action/"] &&
+          {
+            echo "Repository belum di-clone. Cloning...";
+            mkdir -p `/senpro/463601/modul01;
+            cd ~/senpro/463601/modul01;
+            git clone git@github.com:aldoarya/senpro-github-action.git;
+            cd -/senpro/463601/modul01/senpro-github-action;
+            echo "Install Package dan Build Project";
+            npm install;
+            npm run build;
 
-        } ||
-        {
-          echo "Repository sudah ada. Building...";
-          cd -/senpro/463601/modul01/senpro-github-action;
-          git restore .;
-          git pull origin main;
-          echo "Install Package dan Buid Project";
-          npm install;
-          npm run build;
-        }
+          } ||
+          {
+            echo "Repository sudah ada. Building...";
+            cd -/senpro/463601/modul01/senpro-github-action;
+            git restore .;
+            git pull origin main;
+            echo "Install Package dan Buid Project";
+            npm install;
+            npm run build;
+          }
