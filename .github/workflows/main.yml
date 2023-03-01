@@ -39,7 +39,7 @@ jobs:
           port: ${{secrets.PORT}}
           script: |
             eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/senpro-ssh-2
+            ssh-add ~/.ssh/senpro-ssh-28
             echo "Cek folder project";
             [ ! -d "/home/seniorproject-rabu/senpro/463601/modul02/senpro-github-action"] &&
             {
@@ -55,7 +55,7 @@ jobs:
             } ||
             {
               echo "Repository sudah ada. Building...";
-              cd -/senpro/463601/modul02/senpro-github-action;
+              cd -/senpro/463601/modul02/senpro-github-action;s
               git restore .;
               git pull origin main;
               echo "Install Package dan Buid Project";
