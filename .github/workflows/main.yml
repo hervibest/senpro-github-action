@@ -16,11 +16,11 @@ jobs:
       - name: Set up SSH environment
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh-modul4
-          chmod 600 ~/.ssh/ssh-modul4
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh-modul4.pem
+          chmod 600 ~/.ssh/ssh-modul4.pem
           eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/ssh-modul4
+          ssh-add ~/.ssh/ssh-modul4.pem
 
       - name: Deploy to Server
         run: |
-          ssh -i ~/.ssh/ssh-modul4 vm-modul4@20.172.226.78 "cd /path/to/remote/directory && <command-to-deploy>"
+          ssh -i ~/.ssh/ssh-modul4.pem vm-modul4@20.172.226.78 "cd /path/to/remote/directory && <command-to-deploy>"
