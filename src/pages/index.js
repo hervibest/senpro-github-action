@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Modul 01 - Lab 2.2 | Senior Project 2023</title>
+        <title>Modul 0122 - Lab 2.2 | Senior Project 2023</title>
         <meta name="description" content="Template untuk Lab 2.2. Github Actions. Based on create next app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
