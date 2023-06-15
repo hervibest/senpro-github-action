@@ -19,12 +19,21 @@ jobs:
       - name: Build Application
         run: npm run build
 
+      - name: Set up SSH environment
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PASSPHRASE }}" > ~/.ssh/passphrase
+          chmod 600 ~/.ssh/passphrase
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: 20.172.226.78
           username: vm-modul4
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key_path: ~/.ssh/id_rsa
+          passphrase_path: ~/.ssh/passphrase
           script: |
             cd /path/to/remote/directory
-            # Command to deploy the application (e.g., copying files, restarting services, etc.)
+            # Command to deploy the application (e.g., copying files, restarting services, etc.
