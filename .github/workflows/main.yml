@@ -38,8 +38,7 @@
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             port: ${{secrets.PORT}}
             script: |
-              eval "$(ssh-agent -s)"
-              ssh-add ~/.ssh/senpro-ssh-27
+              
               echo "Cek folder project";
               [ ! -d "/home/seniorproject-rabu/senpro/463601/modul01/senpro-github-action/" &&
                 {
