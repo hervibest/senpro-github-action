@@ -1,4 +1,4 @@
-name: Deploy App
+name: Deploy to Server
 
 on:
   push:
@@ -13,27 +13,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Application
-        run: npm run build
-
       - name: Set up SSH environment
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PASSPHRASE }}" > ~/.ssh/passphrase
-          chmod 600 ~/.ssh/passphrase
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ssh-modul4
+          chmod 600 ~/.ssh/ssh-modul4
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/ssh-modul4
 
       - name: Deploy to Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: 20.172.226.78
-          username: vm-modul4
-          key_path: ~/.ssh/id_rsa
-          passphrase_path: ~/.ssh/passphrase
-          script: |
-            cd /path/to/remote/directory
-            # Command to deploy the application (e.g., copying files, restarting services, etc.
+        run: |
+          ssh -i ~/.ssh/ssh-modul4 vm-modul4@20.172.226.78 "cd /path/to/remote/directory && <command-to-deploy>"
