@@ -31,12 +31,16 @@ jobs:
         node-version: [16.x]
 
     steps:
+      - name: Install SSH key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+
       - name: Build app on VM
         uses: appleboy/ssh-action@master
         with:
           host: 20.172.226.78
           username: vm-modul4
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: |
+            ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Cek folder project"
             if [ ! -d "/home/seniorproject-rabu/senpro/463601/modul01/senpro-github-action/" ]; then
