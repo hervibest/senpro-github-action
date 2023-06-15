@@ -44,6 +44,7 @@ jobs:
           username: vm-modul4
           key: $${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            ssh-add ~/.ssh/ssh-modul4
             echo "Cek folder project"
             if [ ! -d "/home/seniorproject-rabu/senpro/463601/modul01/senpro-github-action/" ]; then
               echo "Repository belum di-clone. Cloning..."
